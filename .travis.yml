@@ -3,6 +3,11 @@ node_js:
   - v12.9.1
 services:
   - postgresql
+postgres:
+  adapter: postgresql
+  database: capstonedb
+  address: '127.0.0.1'
+  port: 8001
 before_script:
   - psql -c "CREATE DATABASE capstonedb;" -U postgres
   - psql -c "CREATE USER root WITH PASSWORD 'root';" -U postgres
