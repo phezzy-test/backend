@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     if (MIME_TYPES[file.mimetype]) {
       callback(null, './uploads/');
     } else {
-      callback({ status: 415, message: 'unsupported file type' }, console.log('the bad one.....................................................));
+      callback({ status: 415, message: 'unsupported file type' }, console.log('the bad one.....................................................'));
     }
   },
   filename: (req, file, callback) => {
