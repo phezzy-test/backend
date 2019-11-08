@@ -1,6 +1,6 @@
 /* eslint-disable no-multi-str */
 const db = require('../dbconn');
-
+console.log();
 exports.build = () => {
   const buildSequences = () => new Promise((resolve, reject) => {
     db.query(`\
