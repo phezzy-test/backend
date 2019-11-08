@@ -42,12 +42,12 @@ exports.employee = (req, res, next) => {
 exports.admin = (req, res, next) => {
   exports.parseUser(req).then((user) => {
     if (user) {
-      console('is a valid user');
+      console.log('is a valid user');
       db.query('SELECT job_title FROM job_roles WHERE job_id = $1', [user.job_role]).then(({ rowCount, rows }) => {
         if (rowCount > 0 && rows[0].job_title === 'admin') {
           global.$User = user;
           next();
-          console('user verified to be an admin');
+          console.log('user verified to be an admin');
         } else {
           console.log(rows);
           throw new Error('User not admin');
