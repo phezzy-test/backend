@@ -7,20 +7,8 @@ const MIME_TYPES = {
   'image/gif': 'gif',
 };
 
-const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    if (MIME_TYPES[file.mimetype]) {
-      callback(null, 'uploads');
-    } else {
-      callback({ status: 415, message: 'unsupported file type' }, false);
-    }
-  },
-  filename: (req, file, callback) => {
-    const name = file.originalname.split(' ').join('_');
-    const extension = MIME_TYPES[file.mimetype] ? MIME_TYPES[file.mimetype] : '';
-    callback(null, `${name + Date.now()}.${extension}`);
-  },
-});
+const m = multer({ dest: 'uploads/' });
+console.log('MULTER BUILD IS : ', m);
 
-module.exports = multer({ dest: 'uploads/' }).any();
 
+module.exports = m.any();

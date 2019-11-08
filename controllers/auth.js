@@ -9,7 +9,6 @@ const lib = require('../middleware/lib');
 
 
 exports.createUser = (req, res) => {
-  console.log('About to create a new user', req.body);
   const validate = () => {
     let isValid = true;
     const error = {};
@@ -93,7 +92,6 @@ exports.createUser = (req, res) => {
 
   // Validate request before submitting
   if (report.status) {
-    console.log('all files passed');
     cloud.uploads(req.files[0].path).then(({ secure_url }) => {
       fs.unlink(req.files[0].path, (error) => (error ? console.log('Unable to delete file after upload :', error) : ''));
       const { data } = report;
