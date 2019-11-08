@@ -1,6 +1,6 @@
 const multer = require('multer');
 
-console.log('we atleast in multer');
+console.log('we atleast in multer and req body is : ', req.body);
 
 // App accepted mime types
 const MIME_TYPES = {
