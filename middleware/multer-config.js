@@ -10,9 +10,9 @@ const MIME_TYPES = {
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     if (MIME_TYPES[file.mimetype]) {
-      callback(null, 'uploads/');
+      callback(null, './uploads/');
     } else {
-      callback({ status: 415, message: 'unsupported file type' }, false);
+      callback({ status: 415, message: 'unsupported file type' }, console.log('the bad one.....................................................));
     }
   },
   filename: (req, file, callback) => {
