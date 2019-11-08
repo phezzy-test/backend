@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
               // global.$User = user;
               console.log('user verified to be an admin');
               try {
-                next();
+//                 next();
               } catch (error) {
                 console.log('Error firing "next" to continue the execution ');
               }
