@@ -9,7 +9,7 @@ const lib = require('../middleware/lib');
 
 
 exports.createUser = (req, res) => {
-  console.log('About to create a new user');
+  console.log('About to create a new user', req.body);
   const validate = () => {
     let isValid = true;
     const error = {};
@@ -26,7 +26,7 @@ exports.createUser = (req, res) => {
     const isJobRole = (jobRole) => {
       let department = false;
       Object.keys(db.$departments).forEach((dept) => {
-        if (!department && db.$departments[dept].indexOf(jobRole.toLowerCase()) !== -1) {
+        if (!department && db.$departments[dept].indexOf(jobRole) !== -1) {
           department = dept;
         }
       });
@@ -151,7 +151,9 @@ exports.createUser = (req, res) => {
       });
     });
   } else {
-    fs.unlink(req.files[0].path, (error) => (error ? console.log('Unable to delete file after upload :', error) : ''));
+    if (req.files) {
+      fs.unlink(req.files[0].path, (error) => (error ? console.log('Unable to delete file after upload :', error) : ''));
+    }
     res.status(400).json({
       status: 'error',
       error: report.error,

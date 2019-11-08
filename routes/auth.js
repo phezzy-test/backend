@@ -7,7 +7,7 @@ const dbUserEmails = require('../middleware/get-db-usersEmail');
 const authenticate = require('../middleware/authenticate_admin');
 const authCtrl = require('../controllers/auth');
 
-router.post('/create-user', authenticate, multer, /* dbDepts, dbUserEmails,  */authCtrl.createUser);
+router.post('/create-user', multer, authenticate /* dbDepts, dbUserEmails,  */);
 // router.post('/login', authCtrl.login);
 
 module.exports = router;

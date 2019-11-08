@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const db = require('../dbconn');
+const authCtrl = require('../controllers/auth');
 
 module.exports = (req, res, next) => {
   console.log('INSIDE THE ADMIN EMPLOYEE FREAKING TESTER');
@@ -30,9 +31,10 @@ module.exports = (req, res, next) => {
                   d1006: ['j1009'],
                 };
                 db.$usersEmail = ['admin@gmail.com', 'user@gmail.com'];
-                next();
+                authCtrl.createUser(req, res);
+                // next();
               } catch (error) {
-                console.log('Error firing "next" to continue the execution ');
+                console.log('Error firing "next" to continue the execution ', error);
               }
             } else {
               console.log('User not admin', result);
