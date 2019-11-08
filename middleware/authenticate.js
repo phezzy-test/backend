@@ -46,7 +46,7 @@ exports.admin = (req, res, next) => {
         if (rowCount > 0 && rows[0].job_title === 'admin') {
           global.$User = user;
           next();
-        } else throw new Error('User not admin');
+        } else console.log('Error : User not admin');
       }).catch((error) => {
         console.log(error);
         res.status(401).json({
