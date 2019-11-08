@@ -100,6 +100,7 @@ describe('POST /auth/create-user', () => {
 
   after((done) => {
     testDb.destroy().then(() => {
+      process.ext();
       done();
     }).catch((error) => {
       console.log('Failed to destroy test database', error);
