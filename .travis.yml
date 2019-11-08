@@ -3,16 +3,13 @@ node_js:
   - v12.9.1
 services:
   - postgresql
-#env:
- # global:
-  #- PGPORT=8001
-services:
-  - postgresql
 postgres:
   adapter: postgresql
-  database: capstonedb
+  database: test_db
   address: '127.0.0.1'
-  port: 8001
 before_script:
   - psql -c "CREATE DATABASE test_db;" -U postgres
   - psql -c "CREATE USER root WITH PASSWORD 'root';" -U postgres
+scripts:
+  start: "nodemon server.js",
+  test: "set NODE_ENV=test&&mocha --recursive --exist"
