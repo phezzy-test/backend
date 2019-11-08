@@ -36,7 +36,7 @@ exports.build = () => {
 
   const buildDepartmentsTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE departments (\
+      CREATE TABLE public.departments (\
         dept_name name COLLATE pg_catalog."C" NOT NULL,\
         dept_desks integer NOT NULL,\
         dept_floor integer NOT NULL,\
@@ -49,7 +49,7 @@ exports.build = () => {
 
   const fillDepartmentsTable = () => new Promise((resolve, reject) => {
     db.query('\
-      INSERT INTO departments ("dept_name", "dept_desks", "dept_floor", "dept_id")\
+      INSERT INTO public.departments ("dept_name", "dept_desks", "dept_floor", "dept_id")\
       VALUES\
       (\'sales\', 14, 2, \'d1001\'),\
       (\'administration\', 5, 6, \'d1002\'),\
