@@ -10,6 +10,4 @@ postgres:
 before_script:
   - psql -c "CREATE DATABASE test_db;" -U postgres
   - psql -c "CREATE USER root WITH PASSWORD 'root';" -U postgres
-scripts:
-  start: "nodemon server.js",
-  test: "set NODE_ENV=test&&mocha --recursive --exist"
+scripts: npm test
