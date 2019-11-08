@@ -7,7 +7,7 @@ const authenticate = require('../middleware/authenticate_admin');
 const authCtrl = require('../controllers/auth');
 
 const b = (req, res, next) => {
-  console.log("before multer req body ");
+  console.log("before multer req body ", req.body);
   next();
 }; 
 
