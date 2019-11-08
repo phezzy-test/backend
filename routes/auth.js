@@ -1,9 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-// const multer = require('../middleware/multer-config');
-const multer = require("multer");
-const upload = multer({ dest: 'uploads/' });
+const multer = require('../middleware/multer-config');
 const dbDepts = require('../middleware/get-db-departments');
 const authenticate = require('../middleware/authenticate_admin');
 const authCtrl = require('../controllers/auth');
@@ -23,7 +21,7 @@ const test2 = (req, res, next) => {
   next();
 };
 
-router.post('/create-user', test1, b, upload.any(),  test2);
+router.post('/create-user', test1, b, multer,  test2);
 // router.post('/login', authCtrl.login);
 
 module.exports = router;
