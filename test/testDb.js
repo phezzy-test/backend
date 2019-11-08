@@ -3,15 +3,15 @@ const db = require('../dbconn');
 
 exports.build = () => {
   const buildSequences = () => new Promise((resolve, reject) => {
-    db.query('\
+    db.query(`\
       CREATE SEQUENCE public."commentId-increment"\
         INCREMENT 1\
         START 100\
         MINVALUE 100\
         MAXVALUE 99999999999999\
         CACHE 1;\
-      ALTER SEQUENCE public."commentId-increment"\
-        OWNER TO root;\
+      ALTER SEQUENCE "commentId-increment"\
+        OWNER TO ${process.env.DB_USER};\
       \
       CREATE SEQUENCE public."postId-increment"\
         INCREMENT 1\
@@ -19,8 +19,8 @@ exports.build = () => {
         MINVALUE 100\
         MAXVALUE 99999999999999\
         CACHE 1;\
-      ALTER SEQUENCE public."postId-increment"\
-        OWNER TO root;\
+      ALTER SEQUENCE "postId-increment"\
+        OWNER TO ${process.env.DB_USER};\
       \
       CREATE SEQUENCE public."userId-increment"\
         INCREMENT 1\
@@ -29,14 +29,14 @@ exports.build = () => {
         MAXVALUE 99999999999999\
         CACHE 1;\
       ALTER SEQUENCE public."userId-increment"\
-        OWNER TO root;\
-    ').then((result) => resolve(result))
+        OWNER TO ${process.env.DB_USER};\
+    `).then((result) => resolve(result))
       .catch((error) => reject(error));
   });
 
   const buildDepartmentsTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE public.departments (\
+      CREATE TABLE public.public.departments (\
         dept_name text COLLATE pg_catalog."C" NOT NULL,\
         dept_desks integer NOT NULL,\
         dept_floor integer NOT NULL,\
@@ -49,7 +49,7 @@ exports.build = () => {
 
   const fillDepartmentsTable = () => new Promise((resolve, reject) => {
     db.query('\
-      INSERT INTO public.departments ("dept_name", "dept_desks", "dept_floor", "dept_id")\
+      INSERT INTO departments ("dept_name", "dept_desks", "dept_floor", "dept_id")\
       VALUES\
       (\'sales\', 14, 2, \'d1001\'),\
       (\'administration\', 5, 6, \'d1002\'),\
@@ -64,10 +64,10 @@ exports.build = () => {
 
   const buildJobRolesTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE job_roles (\
-        job_title name COLLATE pg_catalog."C" NOT NULL,\
-        dept_id name COLLATE pg_catalog."C" NOT NULL,\
-        job_id name COLLATE pg_catalog."C" NOT NULL,\
+      CREATE TABLE public.job_roles (\
+        job_title text COLLATE pg_catalog."C" NOT NULL,\
+        dept_id text COLLATE pg_catalog."C" NOT NULL,\
+        job_id text COLLATE pg_catalog."C" NOT NULL,\
         CONSTRAINT job_roles_pkey PRIMARY KEY (job_id),\
         CONSTRAINT department_fkey FOREIGN KEY (dept_id)\
           REFERENCES public.departments (dept_id) MATCH SIMPLE\
@@ -98,7 +98,7 @@ exports.build = () => {
 
   const buildUsersTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE users (\
+      CREATE TABLE public.users (\
         first_name text COLLATE pg_catalog."default" NOT NULL,\
         last_name text COLLATE pg_catalog."default" NOT NULL,\
         email text COLLATE pg_catalog."default" NOT NULL,\
@@ -124,9 +124,9 @@ exports.build = () => {
 
   const buildPostsTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE posts (\
+      CREATE TABLE public.posts (\
         post_id bigint NOT NULL DEFAULT nextval(\'"postId-increment"\'::regclass),\
-        post_table name COLLATE pg_catalog."C" NOT NULL,\
+        post_table text COLLATE pg_catalog."C" NOT NULL,\
         CONSTRAINT posts_pkey PRIMARY KEY (post_id)\
       )\
     ').then((result) => resolve(result))
@@ -135,7 +135,7 @@ exports.build = () => {
 
   const buildArticlesTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE articles (\
+      CREATE TABLE public.articles (\
         article_id integer NOT NULL,\
         title text COLLATE pg_catalog."default" NOT NULL,\
         article text COLLATE pg_catalog."default" NOT NULL,\
@@ -152,7 +152,7 @@ exports.build = () => {
 
   const buildGifsTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE gifs (\
+      CREATE TABLE public.gifs (\
         gif_id integer NOT NULL,\
         image_url text COLLATE pg_catalog."default" NOT NULL,\
         title text COLLATE pg_catalog."default",\
@@ -170,7 +170,7 @@ exports.build = () => {
 
   const buildCommentsTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE comments (\
+      CREATE TABLE public.comments (\
         comment_id integer NOT NULL DEFAULT nextval(\'"commentId-increment"\'::regclass),\
         post_id integer NOT NULL,\
         author_id integer NOT NULL,\
@@ -192,7 +192,7 @@ exports.build = () => {
 
   const buildDepartmentManagersTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE department_managers (\
+      CREATE TABLE public.department_managers (\
         from_date timestamp with time zone NOT NULL,\
         to_date timestamp with time zone NOT NULL,\
         user_id bigint NOT NULL,\
