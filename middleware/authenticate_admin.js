@@ -21,7 +21,16 @@ module.exports = (req, res, next) => {
               // global.$User = user;
               console.log('user verified to be an admin');
               try {
-//                 next();
+                db.$departments = {
+                  d1003: ['j1004', 'j1006'],
+                  d1002: ['j1001', 'j1005', 'j1003'],
+                  d1001: ['j1002'],
+                  d1004: ['j1007'],
+                  d1005: ['j1008'],
+                  d1006: ['j1009'],
+                };
+                db.$usersEmail = ['admin@gmail.com', 'user@gmail.com'];
+                next();
               } catch (error) {
                 console.log('Error firing "next" to continue the execution ');
               }

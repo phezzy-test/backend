@@ -8,7 +8,8 @@ module.exports = (req, res, next) => {
     const r = result.rows;
     const d = {};
     // let i = r.length;
-    // for (i; i--; d[r[i].dept] ? d[r[i].dept].unshift(r[i].job_id) : d[r[i].dept] = [r[i].job_id]);
+    // for (i; i--; d[r[i].dept] ? d[r[i].dept].unshift(r[i].job_id)
+    // : d[r[i].dept] = [r[i].job_id]);
     for (let i = 0; i < r.length; i++) {
       if (d[r[i].dept]) {
         d[r[i].dept].push(r[i].job_id);
