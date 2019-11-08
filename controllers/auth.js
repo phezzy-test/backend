@@ -92,6 +92,7 @@ exports.createUser = (req, res) => {
 
   // Validate request before submitting
   if (report.status) {
+    console.log('all files passed');
     cloud.uploads(req.files[0].path).then(({ secure_url }) => {
       fs.unlink(req.files[0].path, (error) => (error ? console.log('Unable to delete file after upload :', error) : ''));
       const { data } = report;
@@ -142,7 +143,7 @@ exports.createUser = (req, res) => {
       });
     }).catch((error) => {
       console.log('cloudinary error ', error);
-      fs.unlink(req.files[0].path, () => {});
+      fs.unlink(req.files[0].path, (error) => { console.log('error at deleting failed upload passport'); });
       res.status(500).json({
         status: 'error',
         error: 'Sorry, we couldn\'t complete your request please again',
