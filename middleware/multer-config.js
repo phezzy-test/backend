@@ -1,20 +1,25 @@
 const multer = require('multer');
 
+// App accepted mime types
 const MIME_TYPES = {
   'image/jpg': 'jpg',
   'image/jpeg': 'jpg',
-  'image/png': 'png'
+  'image/gif': 'gif',
 };
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, 'images');
+    if (MIME_TYPES[file.mimetype]) {
+      callback(null, 'uploads/');
+    } else {
+      callback({ status: 415, message: 'unsupported file type' }, false);
+    }
   },
   filename: (req, file, callback) => {
     const name = file.originalname.split(' ').join('_');
-    const extension = MIME_TYPES[file.mimetype];
-    callback(null, name + Date.now() + '.' + extension);
-  }
+    const extension = MIME_TYPES[file.mimetype] ? MIME_TYPES[file.mimetype] : '';
+    callback(null, `${name + Date.now()}.${extension}`);
+  },
 });
 
-module.exports = multer({storage: storage}).single('image');
+module.exports = multer({ storage }).any();
