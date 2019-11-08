@@ -196,7 +196,7 @@ exports.build = () => {
         from_date timestamp with time zone NOT NULL,\
         to_date timestamp with time zone NOT NULL,\
         user_id bigint NOT NULL,\
-        dept_id name COLLATE pg_catalog."C" NOT NULL,\
+        dept_id text COLLATE pg_catalog."C" NOT NULL,\
         CONSTRAINT department_managers_pkey PRIMARY KEY (dept_id),\
         CONSTRAINT dept_id FOREIGN KEY (dept_id)\
             REFERENCES public.departments (dept_id) MATCH SIMPLE\
