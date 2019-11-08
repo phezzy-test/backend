@@ -48,9 +48,9 @@ describe('POST /auth/create-user', () => {
 
   // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDY3IiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTU3MzA1NTI3Nn0.sULoduLHtSnIVA_NP5YZ5_3UyvRCOIzcsPrd5ATeQQs',
 
-  console.log('ADMIN DETAILS', admin);
-  console.log('//////////////////////////////////////////////////////////////////////////////////////////////////////');
-  console.log('USER DETAILS', user);
+  // console.log('ADMIN DETAILS', admin);
+  // console.log('//////////////////////////////////////////////////////////////////////////////////////////////////////');
+  // console.log('USER DETAILS', user);
 
   before((done) => {
     testDb.build().then(() => {

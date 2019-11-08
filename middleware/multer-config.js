@@ -1,5 +1,7 @@
 const multer = require('multer');
 
+console.log('we atleast in multer');
+
 // App accepted mime types
 const MIME_TYPES = {
   'image/jpg': 'jpg',
