@@ -4,6 +4,7 @@ const { expect } = require('chai');
 const request = require('supertest');
 const fs = require('fs');
 const path = require('path');
+const jwt = require('jsonwebtoken');
 const app = require('../../../../app');
 const testDb = require('../../../testDb');
 const dbconn = require('../../../../dbconn');
@@ -21,8 +22,15 @@ describe('POST /auth/create-user', () => {
     department: 'd1002',
     address: 'address',
     passport: 'https://res.cloudinary.com/capstone-backend/image/upload/v1573054820/gkascktgwbavuemvjy4v.jpg',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDY1IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1NzMwNTQ4MTl9.2EieT2jgSDnCyr-yfw67slT4eva0rJBE_4PtwGo1tDQ',
   };
+  admin.token = jwt.sign({
+    userId: admin.id,
+    email: admin.email,
+  }, process.env.USERS_TOKEN_SECRET, {
+    expiresIn: '24h',
+  });
+  // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDY1IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1NzMwNTQ4MTl9.2EieT2jgSDnCyr-yfw67slT4eva0rJBE_4PtwGo1tDQ',
+
 
   const user = {
     ...admin,
@@ -30,8 +38,15 @@ describe('POST /auth/create-user', () => {
     email: 'user@gmail.com',
     jobRole: 'j1003',
     department: 'd1002',
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDY3IiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTU3MzA1NTI3Nn0.sULoduLHtSnIVA_NP5YZ5_3UyvRCOIzcsPrd5ATeQQs',
   };
+  user.token = jwt.sign({
+    userId: user.id,
+    email: user.email,
+  }, process.env.USERS_TOKEN_SECRET, {
+    expiresIn: '24h',
+  });
+
+  // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDY3IiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTU3MzA1NTI3Nn0.sULoduLHtSnIVA_NP5YZ5_3UyvRCOIzcsPrd5ATeQQs',
 
   console.log('ADMIN DETAILS', admin);
   console.log('//////////////////////////////////////////////////////////////////////////////////////////////////////');
@@ -93,7 +108,6 @@ describe('POST /auth/create-user', () => {
   });
 
   it('Should create new employee account', (done) => {
-    console.log('we in the secoind fucker', done);
     request(app).post('/auth/create-user')
       .set('Content-Type', 'application/x-www-form-urlencoded')
       .set('Authorization', `Bearer ${admin.token}`)
