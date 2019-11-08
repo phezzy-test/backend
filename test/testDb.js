@@ -36,7 +36,7 @@ exports.build = () => {
 
   const buildDepartmentsTable = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE TABLE public.public.departments (\
+      CREATE TABLE public.departments (\
         dept_name text COLLATE pg_catalog."C" NOT NULL,\
         dept_desks integer NOT NULL,\
         dept_floor integer NOT NULL,\
