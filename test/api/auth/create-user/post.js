@@ -29,8 +29,6 @@ describe('POST /auth/create-user', () => {
   }, process.env.USERS_TOKEN_SECRET, {
     expiresIn: '24h',
   });
-  // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDY1IiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1NzMwNTQ4MTl9.2EieT2jgSDnCyr-yfw67slT4eva0rJBE_4PtwGo1tDQ',
-
 
   const user = {
     ...admin,
@@ -45,12 +43,6 @@ describe('POST /auth/create-user', () => {
   }, process.env.USERS_TOKEN_SECRET, {
     expiresIn: '24h',
   });
-
-  // token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxMDY3IiwiZW1haWwiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTU3MzA1NTI3Nn0.sULoduLHtSnIVA_NP5YZ5_3UyvRCOIzcsPrd5ATeQQs',
-
-  // console.log('ADMIN DETAILS', admin);
-  // console.log('//////////////////////////////////////////////////////////////////////////////////////////////////////');
-  // console.log('USER DETAILS', user);
 
   before((done) => {
     testDb.build().then(() => {
@@ -100,7 +92,6 @@ describe('POST /auth/create-user', () => {
 
   after((done) => {
     testDb.destroy().then(() => {
-      process.ext(0);
       done();
     }).catch((error) => {
       console.log('Failed to destroy test database', error);
@@ -122,9 +113,7 @@ describe('POST /auth/create-user', () => {
       .field('email', 'test1@gmail.com')
       .attach('passport', fs.readFileSync(path.resolve(__dirname, '../../../../samples/image.jpg')), 'image.jpg')
       .then((res) => {
-        const { body, status } = res;
-        // console.log('STATUS FROM ADMIN QUERY : ', status);
-        // console.log('BODY FROM ADMIN QUERY : ', body);
+        const { body } = res;
         expect(body).to.contain.property('status').to.equal('success');
         expect(body).to.contain.property('data');
         expect(body.data).to.contain.property('message');
