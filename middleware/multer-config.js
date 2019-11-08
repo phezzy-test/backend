@@ -22,4 +22,4 @@ const storage = multer.diskStorage({
   },
 });
 
-module.exports = multer({ storage }).any();
+module.exports = multer({ dest: 'uploads/' }).any();
