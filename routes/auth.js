@@ -23,7 +23,7 @@ const test2 = (req, res, next) => {
   next();
 };
 
-router.post('/create-user', test1, b, upload.single('passport'),  test2);
+router.post('/create-user', test1, b, upload.any(),  test2);
 // router.post('/login', authCtrl.login);
 
 module.exports = router;
