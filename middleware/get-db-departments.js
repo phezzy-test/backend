@@ -2,6 +2,8 @@ const db = require('../dbconn');
 
 module.exports = (req, res, next) => {
   // Get and save company job roles and departments
+  console.log('WE GOING TO GET ALL EMPLOYEE DEPARTMENT AND JOB ROLES');
+
   db.query('SELECT departments.dept_id AS dept, job_roles.job_id FROM job_roles LEFT JOIN departments ON job_roles.dept_id = departments.dept_id').then((result) => {
     const r = result.rows;
     const d = {};

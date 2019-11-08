@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
       .then(({ rowCount, rows }) => {
         const user = rowCount > 0 ? rows[0] : false;
         if (user) {
-          console.log('is a valid user', user);
+          console.log('is a valid user');
           db.query('SELECT job_title FROM job_roles WHERE job_id = $1', [user.job_role]).then((result) => {
             const { rowCount: rowC, rows: rowS } = result;
             // console.log('TRYING TO verify USER JOB AND RESULT IS : ', result);
