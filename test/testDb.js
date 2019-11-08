@@ -4,32 +4,32 @@ const db = require('../dbconn');
 exports.build = () => {
   const buildSequences = () => new Promise((resolve, reject) => {
     db.query('\
-      CREATE SEQUENCE "commentId-increment"\
+      CREATE SEQUENCE public."commentId-increment"\
         INCREMENT 1\
         START 100\
         MINVALUE 100\
         MAXVALUE 99999999999999\
         CACHE 1;\
-      ALTER SEQUENCE "commentId-increment"\
-        OWNER TO postgres;\
+      ALTER SEQUENCE public."commentId-increment"\
+        OWNER TO root;\
       \
-      CREATE SEQUENCE "postId-increment"\
+      CREATE SEQUENCE public."postId-increment"\
         INCREMENT 1\
         START 100\
         MINVALUE 100\
         MAXVALUE 99999999999999\
         CACHE 1;\
-      ALTER SEQUENCE "postId-increment"\
-        OWNER TO postgres;\
+      ALTER SEQUENCE public."postId-increment"\
+        OWNER TO root;\
       \
-      CREATE SEQUENCE "userId-increment"\
+      CREATE SEQUENCE public."userId-increment"\
         INCREMENT 1\
         START 1000\
         MINVALUE 1000\
         MAXVALUE 99999999999999\
         CACHE 1;\
       ALTER SEQUENCE public."userId-increment"\
-        OWNER TO postgres;\
+        OWNER TO root;\
     ').then((result) => resolve(result))
       .catch((error) => reject(error));
   });
