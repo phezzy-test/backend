@@ -8,16 +8,15 @@ const authenticate = require('../middleware/authenticate_admin');
 const authCtrl = require('../controllers/auth');
 
 const test1 = (req, res, next) => {
-    console.log("hello world form TEST 1);
-    next();
-};
-                
+  console.log("hello world form TEST 1);
+  next();
+};              
 const test2 = (req, res, next) => {
-    console.log("hello world form TEST 2);
-    next();
+  console.log("hello world form TEST 2);
+  next();
 };
 
-router.post('/create-user', multer, authenticate /* dbDepts, dbUserEmails,  */);
+router.post('/create-user', test1, test2 /* dbDepts, dbUserEmails,  */);
 // router.post('/login', authCtrl.login);
 
 module.exports = router;
