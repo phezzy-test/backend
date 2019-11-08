@@ -37,10 +37,10 @@ exports.build = () => {
   const buildDepartmentsTable = () => new Promise((resolve, reject) => {
     db.query('\
       CREATE TABLE public.departments (\
-        dept_name name COLLATE pg_catalog."C" NOT NULL,\
+        dept_name text COLLATE pg_catalog."C" NOT NULL,\
         dept_desks integer NOT NULL,\
         dept_floor integer NOT NULL,\
-        dept_id name COLLATE pg_catalog."C" NOT NULL,\
+        dept_id text COLLATE pg_catalog."C" NOT NULL,\
         CONSTRAINT department_pkey PRIMARY KEY (dept_id)\
       )\
     ').then((result) => resolve(result))
