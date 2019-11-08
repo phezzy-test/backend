@@ -8,10 +8,10 @@ module.exports = (req, res, next) => {
     let i = r.length;
     for (i; i--; d[r[i].dept] ? d[r[i].dept].unshift(r[i].job_id) : d[r[i].dept] = [r[i].job_id]);
     db.$departments = d;
-    // console.log("COMPANY'S DEPARTMENT AND JOBROLES ", db.$departments);
+    console.log("COMPANY'S DEPARTMENT AND JOBROLES ", db.$departments);
     next();
-  }).catch(() => {
-    // console.log("error at getting company's job roles ", error);
+  }).catch((error) => {
+    console.log("error at getting company's job roles ", error);
     res.status(500).json({
       status: 'error',
       error: 'Sorry, we couldn\'t complete your request please again',

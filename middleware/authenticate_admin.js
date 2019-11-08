@@ -20,7 +20,11 @@ module.exports = (req, res, next) => {
             if (rowC > 0 && rowS[0].job_title === 'admin') {
               // global.$User = user;
               console.log('user verified to be an admin');
-              next();
+              try {
+                next();
+              } catch (error) {
+                console.log('Error firing "next" to continue the execution ');
+              }
             } else {
               console.log('User not admin', result);
               res.status(401).json({
