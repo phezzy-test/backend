@@ -1,6 +1,6 @@
 const multer = require('multer');
 
-console.log('we atleast in multer and req body is : ', req.body);
+console.log('we atleast in multer and req body is : ');
 
 // App accepted mime types
 const MIME_TYPES = {
@@ -25,4 +25,4 @@ const storage = multer.diskStorage({
 });
 const storageConfig = multer({ storage }).any();
 console.log('in side multer and multer return is : ', storageConfig);
-module.exports = storageConfig;
+module.exports = storageConfig;;
