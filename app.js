@@ -19,8 +19,8 @@ app.use((req, res, next) => {
 // Connect to database
 db.connect().then(() => {
   console.log('Successfully connected to postgresSQL!');
-}).catch((error) => {
-  console.log('Unable to connect to postgresSQL!', error);
+}).catch(() => {
+  console.log('Unable to connect to postgresSQL!');
 });
 
 // Parse request body

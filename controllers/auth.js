@@ -99,7 +99,7 @@ exports.createUser = (req, res) => {
       // Hash user password
       bcrypt.hash(data.password, 10).then((hash) => {
         // Create account in database
-        db.query('INSERT INTO users("passport_url", "first_name", "last_name", "email", "password", "gender", "job_role", "department", "address", "token") VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "user_id"',
+        db.query('INSERT INTO users ("passport_url", "first_name", "last_name", "email", "password", "gender", "job_role", "department", "address", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "user_id"',
           [secure_url, data.firstName, data.lastName, data.email, hash, data.gender, data.jobRole, data.department, data.address, 'token']).then(({ rows: [{ user_id: userId }] }) => {
           /* since admin will be creating account for others, token shouldn't be generated now
           (but at login) and there's no point in admin seeing their token,
