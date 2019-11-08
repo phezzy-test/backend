@@ -9,6 +9,7 @@ const lib = require('../middleware/lib');
 
 
 exports.createUser = (req, res) => {
+  console.log('About to create a new user');
   const validate = () => {
     let isValid = true;
     const error = {};
