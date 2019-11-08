@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const formParse = require('../middleware/formParse');
+const formParse = require('../middleware/formParser');
 const dbDepts = require('../middleware/get-db-departments');
 const dbUserEmails = require('../middleware/get-db-usersEmail');
 const authenticate = require('../middleware/authenticate');

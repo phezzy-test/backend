@@ -44,6 +44,8 @@ describe('POST /auth/create-user', () => {
     expiresIn: '24h',
   });
 
+  let sampleImage;
+
   before((done) => {
     testDb.build().then(() => {
       // Insert required data into table
@@ -78,10 +80,18 @@ describe('POST /auth/create-user', () => {
           '${user.token}'
         )
       `).then(() => {
-        console.log('  - Inserted data into "users" table successfully');
-        done();
+        console.log('  - Inserted data into "users" table successfully\n');
+        console.log('Read sample image');
+        fs.readFile(path.resolve(__dirname, '../../../../samples/image.jpg'), (err, data) => {
+          if (err) {
+            throw new Error("Couldn't read sample image");
+          } else {
+            sampleImage = data;
+            done();
+          }
+        });
       }).catch((error) => {
-        console.log('  - failed inserting data into "users" table', error);
+        console.log('  - Failed inserting data into "users" table', error);
         done();
       });
     }).catch((error) => {
@@ -99,6 +109,7 @@ describe('POST /auth/create-user', () => {
     });
   });
 
+
   it('Should create new employee account', (done) => {
     request(app).post('/auth/create-user')
       .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -111,8 +122,9 @@ describe('POST /auth/create-user', () => {
       .field('password', '12345678')
       .field('address', 'noo 30 street')
       .field('email', 'test1@gmail.com')
-      .attach('passport', fs.readFileSync(path.resolve(__dirname, '../../../../samples/image.jpg')), 'image.jpg')
+      .attach('passport', sampleImage, 'image.jpg')
       .then((res) => {
+        // fs.close(fd, callback);
         const { body } = res;
         expect(body).to.contain.property('status').to.equal('success');
         expect(body).to.contain.property('data');
@@ -120,6 +132,7 @@ describe('POST /auth/create-user', () => {
         expect(body.data).to.contain.property('token');
         expect(body.data).to.contain.property('userId');
         done();
+        console.log('\n');
       })
       .catch((error) => done(error));
   }).timeout(6000);
