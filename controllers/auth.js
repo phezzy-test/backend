@@ -95,9 +95,11 @@ exports.createUser = (req, res) => {
     cloud.uploads(req.files[0].path).then(({ secure_url }) => {
       fs.unlink(req.files[0].path, (error) => (error ? console.log('Unable to delete file after upload :', error) : ''));
       const { data } = report;
+      console.log('User passport upload sucessfully');
 
       // Hash user password
       bcrypt.hash(data.password, 10).then((hash) => {
+        console.log('User password encrypted successfully');
         // Create account in database
         db.query('INSERT INTO users ("passport_url", "first_name", "last_name", "email", "password", "gender", "job_role", "department", "address", "token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "user_id"',
           [secure_url, data.firstName, data.lastName, data.email, hash, data.gender, data.jobRole, data.department, data.address, 'token']).then(({ rows: [{ user_id: userId }] }) => {
@@ -105,6 +107,7 @@ exports.createUser = (req, res) => {
           (but at login) and there's no point in admin seeing their token,
           but for the sake of following instructions JUST DO IT!
           */
+          console.log('User detail inserted but still remaining token');
           const token = jwt.sign({
             userId,
             email: data.email,
@@ -113,6 +116,7 @@ exports.createUser = (req, res) => {
           });
 
           db.query('UPDATE users SET "token"=$1 WHERE "user_id"=$2', [token, userId]).then(() => {
+            console.log('User account successfully created');
             res.status(201).json({
               status: 'success',
               data: {
