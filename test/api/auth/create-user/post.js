@@ -122,6 +122,7 @@ describe('POST /auth/create-user', () => {
       .attach('passport', fs.readFileSync(path.resolve(__dirname, '../../../../samples/image.jpg')), 'image.jpg')
       .then((res) => {
         const { body } = res;
+        console.log('RESULT FROM ADMIN QUERY : ', res);
         expect(body).to.contain.property('status').to.equal('success');
         expect(body).to.contain.property('data');
         expect(body.data).to.contain.property('message');
