@@ -21,5 +21,6 @@ const storage = multer.diskStorage({
     callback(null, `${name + Date.now()}.${extension}`);
   },
 });
-
-module.exports = multer({ storage }).any();
+const storageConfig = multer({ storage }).any();
+console.log('in side multer and multer return is : ', storageConfig);
+module.exports = storageConfig;
