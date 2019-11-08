@@ -121,8 +121,9 @@ describe('POST /auth/create-user', () => {
       .field('email', 'test1@gmail.com')
       .attach('passport', fs.readFileSync(path.resolve(__dirname, '../../../../samples/image.jpg')), 'image.jpg')
       .then((res) => {
-        const { body } = res;
-        console.log('RESULT FROM ADMIN QUERY : ', res);
+        const { body, status } = res;
+        console.log('STATUS FROM ADMIN QUERY : ', status);
+        console.log('BODY FROM ADMIN QUERY : ', body);
         expect(body).to.contain.property('status').to.equal('success');
         expect(body).to.contain.property('data');
         expect(body.data).to.contain.property('message');
