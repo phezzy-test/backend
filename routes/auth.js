@@ -4,10 +4,10 @@ const router = express.Router();
 const multer = require('../middleware/multer-config');
 const dbDepts = require('../middleware/get-db-departments');
 const dbUserEmails = require('../middleware/get-db-usersEmail');
-const authenticate = require('../middleware/authenticate');
+const authenticate = require('../middleware/authenticate_admin');
 const authCtrl = require('../controllers/auth');
 
-router.post('/create-user', multer, authenticate.admin, dbDepts, dbUserEmails, authCtrl.createUser);
+router.post('/create-user', authenticate, multer, dbDepts, dbUserEmails, authCtrl.createUser);
 // router.post('/login', authCtrl.login);
 
 module.exports = router;
