@@ -6,11 +6,13 @@ exports.parseUser = (req) => new Promise((resolve, reject) => {
 
   try {
     const token = req.headers.authorization.split(' ')[1];
+        console.log('TOKEN SENT : ', token);
+    console.log('TOKEN EXPECTED : ', process.env.USERS_TOKEN_SECRET);
+
     const decodedToken = jwt.verify(token, process.env.USERS_TOKEN_SECRET);
     const { userId, email } = decodedToken;
     // console.log("expected user id : ", userId, " email :", email)
-        console.log('TOKEN SENT : ', token);
-    console.log('TOKEN EXPECTED : ', process.env.USERS_TOKEN_SECRET);
+      
 
     // check if userId and email are attached to an account
     db.query('SELECT * FROM users WHERE "user_id"=$1 AND "email"=$2', [userId, email])
