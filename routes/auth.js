@@ -15,7 +15,7 @@ const test2 = (req, res, next) => {
   next();
 };
 
-router.post('/create-user', test1, test2);
+router.post('/create-user', multer, test1, test2);
 // router.post('/login', authCtrl.login);
 
 module.exports = router;
