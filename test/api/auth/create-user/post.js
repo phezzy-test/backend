@@ -9,7 +9,6 @@ const app = require('../../../../app');
 const testDb = require('../../../testDb');
 const dbconn = require('../../../../dbconn');
 
-
 describe('POST /auth/create-user', () => {
   const admin = {
     id: 1065,
@@ -103,7 +102,7 @@ describe('POST /auth/create-user', () => {
   after((done) => {
     testDb.destroy().then(() => {
       done();
-      process.exit() ;
+      process.exit();
     }).catch((error) => {
       console.log('Failed to destroy test database', error);
       done();
