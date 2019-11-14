@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "set NODE_ENV=test&&mocha --exist",
-    "coverage": "nyc npm run test"
+    "coverage": "npm run pretest && jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "author": "",
   "license": "ISC",
