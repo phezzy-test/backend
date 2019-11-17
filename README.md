@@ -59,9 +59,7 @@ ___You should use ```localhost:3000``` as your base url___
 
 | Request        |
 | ------------- |
-| ```node {
-status: 'success'
-}```       |
+| ```node {status: 'success'}``` |
 
 
   * Admin/Employees can sign in.# RESTAPIDocs Examples
