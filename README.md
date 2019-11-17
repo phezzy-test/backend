@@ -41,7 +41,7 @@ ___You should use ```localhost:3000``` as your base url___
   POST http://localhost:3000/auth/create-user
   ```
   ```node
-  __response__
+  ___response___
   {
    status: 'success',
    data : {
