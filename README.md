@@ -42,11 +42,24 @@ ___You should use ```localhost:3000``` as your base url___
   ```
   
   ##### Request spec:
+   ```node
+   headers: {
+       Authorization: Bearer token
+   }
+  body: JSON{
+   status: 'success',
+   data : {
+    message: 'User account successfully created',
+    token: String,
+    userId: Integer
+   }
+  }
+  ```
   
   ##### Response spec :
   ```node
   status : 201
-  {
+  body: JSON {
    status: 'success',
    data : {
     message: 'User account successfully created',
