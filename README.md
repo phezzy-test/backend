@@ -57,6 +57,13 @@ ___You should use ```localhost:3000``` as your base url___
 | col 2 is      | centered      |   $12 |
 | zebra stripes | are neat      |    $1 |
 
+| Request        |
+| ------------- |
+| ```node {|
+|status: 'success'|
+|}```       |
+
+
   * Admin/Employees can sign in.# RESTAPIDocs Examples
 
 These examples were taken from projects mainly using [Django Rest
