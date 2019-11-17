@@ -40,8 +40,10 @@ ___You should use ```localhost:3000``` as your base url___
   ```node
   POST http://localhost:3000/auth/create-user
   ```
+  
+  ### Request spec:
   ```node
-  ___response___
+
   {
    status: 'success',
    data : {
