@@ -1,7 +1,3 @@
-[![Build Status](https://travis-ci.com/phezzy-test/backend.svg?token=G5JkSWBYFXmFipMgp8q2&branch=master)](https://travis-ci.com/phezzy-test/backend)
-[![Coverage Status](https://coveralls.io/repos/github/phezzy-test/backend/badge.svg?branch=master)](https://coveralls.io/github/phezzy-test/backend?branch=master)
-# CAPSTONE
-Devc Training with Andela final project 
 # devTraining
 
 
@@ -27,7 +23,7 @@ Run the following commands in terminal
 ```
 git clone  https://github.com/rozay10/devTraining.git
 ```
-##### Install the dependencies
+##### Install dependencies
 ```
 npm i 
 ```
@@ -41,6 +37,9 @@ ___You should use ```localhost:3000``` as your base url___
 
 ## Features
   * Admin can create an employee user account.
+  ```node
+  POST http://localhost:3000/auth/create-user
+  ```
   * Admin/Employees can sign in.# RESTAPIDocs Examples
 
 These examples were taken from projects mainly using [Django Rest
