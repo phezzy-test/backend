@@ -40,6 +40,17 @@ ___You should use ```localhost:3000``` as your base url___
   ```node
   POST http://localhost:3000/auth/create-user
   ```
+  ```node
+  __response__
+  {
+   status: 'success',
+   data : {
+    message: '“User account successfully created',
+    token: String,
+    userId: Integer
+   }
+  }
+  ```
   * Admin/Employees can sign in.# RESTAPIDocs Examples
 
 These examples were taken from projects mainly using [Django Rest
