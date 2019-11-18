@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/akintomiwa-fisayo/CAPSTONE-backend.svg?branch=develop)](https://travis-ci.org/akintomiwa-fisayo/CAPSTONE-backend)
+[![Coverage Status](https://coveralls.io/repos/github/akintomiwa-fisayo/CAPSTONE-backend/badge.svg?branch=develop)](https://coveralls.io/github/akintomiwa-fisayo/CAPSTONE-backend?branch=develop)
+
 # CAPSTONE-backend
 This repo is the backend to [akintomiwa fisayo](https://github.com/akintomiwa-fisayo) [DevCTrainingwithAndela](https://devctraining.andela.com) capstone project
 
@@ -10,6 +13,7 @@ This repo is the backend to [akintomiwa fisayo](https://github.com/akintomiwa-fi
 ## Getting Started
 To run this application, you need have installed the  following:
 - Node
+- Git
 - NPM/Yarn (NPM comes with Node)
 
 ## Installation and usage
