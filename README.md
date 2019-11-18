@@ -1,16 +1,11 @@
-# devTraining
-
+# CAPSTONE-backend
+This repo is the backend to [akintomiwa fisayo](https://github.com/akintomiwa-fisayo) [DevCTrainingwithAndela](https://devctraining.andela.com) capstone project
 
 ## Table of Content
 - [Getting Started](#Getting-Started)
 - [Installation and Usage](#Installation-and-Usage)
 - [Testing](#Testing)
 - [Feature](#Features)
-- [Routes for Express](#Routes-for-Express)
-- [Models](#Models)
-- [API Documentation](#API-Documentation)
-- [License](#License)
-- [FAQ](#FAQ)
 
 ## Getting Started
 To run this application, you need have installed the  following:
@@ -40,7 +35,8 @@ Execute the command below in terminal to run test
 ```shell
 npm test
 ```
-
+_or_ 
+visit build history https://travis-ci.org/akintomiwa-fisayo/CAPSTONE-backend/pull_requests
 ## Features
   * Admin can create an employee user account.
   ```node
