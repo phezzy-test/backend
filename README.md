@@ -5,14 +5,14 @@ This repo is the backend to [akintomiwa fisayo](https://github.com/akintomiwa-fi
 - [Getting Started](#Getting-Started)
 - [Installation and Usage](#Installation-and-Usage)
 - [Testing](#Testing)
-- [Feature](#Features)
+- [Features](#Features)
 
 ## Getting Started
 To run this application, you need have installed the  following:
 - Node
 - NPM/Yarn (NPM comes with Node)
 
-## Installation
+## Installation and usage
 Run the following commands in terminal
 ##### clone the repo
 ```
