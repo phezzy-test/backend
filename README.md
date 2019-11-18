@@ -4,6 +4,9 @@
 # CAPSTONE-backend
 This repo is the backend to [akintomiwa fisayo](https://github.com/akintomiwa-fisayo) [DevCTrainingwithAndela](https://devctraining.andela.com) capstone project
 
+
+[![Coverage Status](https://coveralls.io/repos/github/phezzy-test/backend/badge.svg?branch=master)](https://coveralls.io/github/phezzy-test/backend?branch=master)
+
 ## Table of Content
 - [Getting Started](#Getting-Started)
 - [Installation and Usage](#Installation-and-Usage)
