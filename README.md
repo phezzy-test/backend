@@ -21,7 +21,7 @@ To run this application, you need have installed the  following:
 Run the following commands in terminal
 ##### clone the repo
 ```
-git clone  https://github.com/rozay10/devTraining.git
+git clone  https://github.com/akintomiwa-fisayo/CAPSTONE-backend.git
 ```
 ##### Install dependencies
 ```
@@ -29,11 +29,17 @@ npm i
 ```
 
 #####  Start the server
-
 ```
 npm run start
 ```
 ___You should use ```localhost:3000``` as your base url___
+
+
+## Testing
+Execute the command below in terminal to run test
+```shell
+npm test
+```
 
 ## Features
   * Admin can create an employee user account.
