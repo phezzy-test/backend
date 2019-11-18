@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "set NODE_ENV=test&&mocha --exist",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
+    "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
+    "coveralls-coverage": "coveralls < lcov.info",
+    "coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage"
   },
   "author": "",
   "license": "ISC",
